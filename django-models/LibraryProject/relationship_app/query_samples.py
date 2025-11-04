@@ -1,7 +1,7 @@
-from django.db import models
+from relationship_app.models import models
 
 # List all books available in a Library.
-Library = Library.objects.get(name='library_name')
+Library = Library.objects.get(name=library_name)
 books = library.books.all()
 
 # Filter by a specific author
