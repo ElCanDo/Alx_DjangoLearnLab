@@ -3,7 +3,7 @@ from django.shortcuts import render
 from .models import Book
 from .models import Library
 # Create your views here.
-def book_list(request):
+def list_books(request):
     books = Book.objects.all() #Fetch all books from database
     context = {'book_list': books} #Creates a context dictionary with book list
     return render(request, 'relationship_app/list_books.html', context)
@@ -12,3 +12,5 @@ class LibraryDetailView(DetailView):
     model = Library
     template_name = 'relationship_app/library_detail.html'
     context_object_name = 'library'
+def index(request):
+    return render(request, 'relationship_app/index.html')
