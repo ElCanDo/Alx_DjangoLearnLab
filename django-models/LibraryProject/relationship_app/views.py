@@ -1,6 +1,6 @@
-from django.views.generic import TemplateView
+from django.views.generic import DetailView
 from django.shortcuts import render
-from .models import Book
+from .models import Book, Library
 
 # Create your views here.
 def book_list(request):
@@ -8,5 +8,7 @@ def book_list(request):
     context = {'book_list': books} #Creates a context dictionary with book list
     return render(request, 'list_books.html', context)
 
-class LibraryDetailView(TemplateView):
+class LibraryDetailView(DetailView):
+    model = Library
     template_name = 'library_detail.html'
+    context_object_name = 'library'
