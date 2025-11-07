@@ -8,4 +8,5 @@ books = library.books.all()
 list_author = Author.objects.get(name=author_name)
 books_by_author = Author.objects.filter(author=author)
 
-# Query by 
+#Retrieve Librarian for a library
+Librarian = Librarian.objects.get(library=library)
