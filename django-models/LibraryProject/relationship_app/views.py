@@ -84,15 +84,15 @@ def user_role(role):
 
 @user_passes_test(user_role('Admin'))
 def admin_view(request):
-    return render(request, 'relationship_app/admin_view.html')
+    return render(request, 'relationship_app/admin_view.html', {'role':'Admin'})
 
 @user_passes_test(user_role('Librarian'))
 def librarian_view(request):
-    return render(request, 'relationship_app/librarian_view.html')
+    return render(request, 'relationship_app/librarian_view.html', {'role':'Librarian'})
 
 @user_passes_test(user_role('Member'))
 def member_view(request):
-    return render(request, 'relationship_app/member_view.html')
+    return render(request, 'relationship_app/member_view.html', {'role':'Member'})
 
 # Permission Required Decorator
 @permission_required('relationship_app.can_add_book')
