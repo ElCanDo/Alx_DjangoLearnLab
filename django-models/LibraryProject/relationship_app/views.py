@@ -41,7 +41,7 @@ def register(request):
         else:
             form = UserCreationForm()
             return render(request, 'relationship_app/register.html', {'form':form})
-    return RegisterView.as_view()(request)
+    
 
 class LogoutView(LogoutView):
     next_page = reverse_lazy('login')
