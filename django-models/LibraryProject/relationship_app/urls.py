@@ -7,7 +7,7 @@ urlpatterns=[
     path('books/', list_books, name='book_list'),
     path('library/', LibraryDetailView.as_view(), name='library_detail'),
     #Registration
-    path('register/', views.RegisterView.as_view(template_name='relationship_app/register.htm'), name='register'),
+    path('register/', views.Register(template_name='relationship_app/register.htm'), name='register'),
     #Logout
     path('logout/', LogoutView.as_view(template_name='relationship/logout.html'), name='logout'),
     #Login
