@@ -9,7 +9,7 @@ urlpatterns=[
 ]
 auth_patterns=[
     #Registration
-    path('register/', views.Register(template_name='relationship_app/register.htm'), name='register'),
+    path('register/', views.register(template_name='relationship_app/register.htm'), name='register'),
     #Logout
     path('logout/', LogoutView.as_view(template_name='relationship/logout.html'), name='logout'),
     #Login
