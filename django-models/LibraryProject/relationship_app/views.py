@@ -100,9 +100,9 @@ def add_book_view(request):
     # logic to add a book
 
 @permission_required('relationship_app.can_change_book')
-def add_book_view(request):
-    # logic to add a book
+def change_book_view(request):
+    # logic to change a book
 
 @permission_required('relationship_app.can_delete_book')
-def add_book_view(request):
-    # logic to add a book
+def delete_book_view(request):
+    # logic to delete a book

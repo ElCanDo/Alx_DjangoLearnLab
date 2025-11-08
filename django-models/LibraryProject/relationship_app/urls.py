@@ -9,9 +9,9 @@ urlpatterns=[
     path('admin/', views.admin_view, name='admin_view'),
     path('librarian/', views.librarian_view, name='librarian_view'),
     path('member/', views.member_view, name='member_view'),
-    path('add_book/', name='add_book'),
-    path('edit_book/', name='edit_book'),
-    path('delete_book/', name='delete_book')
+    path('add_book/', views.add_book_view, name='add_book'),
+    path('edit_book/', views.change_book_view, name='edit_book'),
+    path('delete_book/', views.delete_book_view, name='delete_book')
 
 ]
 auth_patterns=[
