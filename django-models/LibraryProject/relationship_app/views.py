@@ -5,7 +5,7 @@ from .models import Library
 from django.contrib.auth import login
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth.forms import UserCreationForm
-# from django.contrib import messages
+from django.contrib.auth.decorators import permissions_required
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import user_passes_test
@@ -93,3 +93,16 @@ def librarian_view(request):
 @user_passes_test(user_role('Member'))
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
+
+# Permission Required Decorator
+@permission_required('relationship_app.can_add_book')
+def add_book_view(request):
+    # logic to add a book
+
+@permission_required('relationship_app.can_change_book')
+def add_book_view(request):
+    # logic to add a book
+
+@permission_required('relationship_app.can_delete_book')
+def add_book_view(request):
+    # logic to add a book
