@@ -52,8 +52,6 @@ class UserProfile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs): 
     if created:                                # Check if the user is new
         # Create a UserProfile linked to the new User
-        UserProfile.objects.create(
-            user=instance,                       # Link to the new user instance
-        )
+        UserProfile.objects.create(user=instance)
 
     
