@@ -1,0 +1,10 @@
+# THE CREATE OPERATION
+
+```python
+#Create and add new book to add to bookshelf
+Book.objects.create(
+    title="1984", 
+    author="George Orwell", 
+    publication_year=1949
+    )
+```
