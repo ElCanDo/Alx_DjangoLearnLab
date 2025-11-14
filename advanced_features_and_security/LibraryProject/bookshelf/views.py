@@ -4,7 +4,8 @@ from django.http import HttpResponse
 from .models import Book
 
 
-def index(request):
+
+def home(request):
     return HttpResponse("Welcome To My Library.")
 
 

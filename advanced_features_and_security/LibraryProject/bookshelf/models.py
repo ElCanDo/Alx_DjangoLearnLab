@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager, Permission
+from django.conf import settings
 
 
 # Create your models here.
@@ -14,7 +15,7 @@ class Book(models.Model):
             ("can_edit", "Can edit book"),
             ("can_delete_book", "Can delete book"),   # custom delete permission
         ]
-        
+
     def __str__(self):
         return f"{self.title} by {self.author}, published in {self.publication_year}"
 
@@ -48,3 +49,9 @@ class CustomUserManager(BaseUserManager):
         user.user_permissions.add(*permissions)
 
         return user
+
+# Before (WRONG)
+user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
+
+# After (CORRECT)
+user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)

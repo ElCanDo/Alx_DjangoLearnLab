@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+# from bookshelf import views
 
 urlpatterns = [
-    path('LibraryProject/', include("bookshelf.urls")),
     path('admin/', admin.site.urls),
+    path('', include("bookshelf.urls")),
+    path('bookshelf/', include('bookshelf.urls')),
+
 ]
