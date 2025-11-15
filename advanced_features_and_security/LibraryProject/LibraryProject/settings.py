@@ -138,3 +138,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 CSRF_COOKIE_SECURE = True
 # Ensures the session cookie
 SESSION_COOKIE_SECURE = True
+#configuring Django for HTTPS Support
+
+#Redirect all non-HTTPS requests to HTTPS
+SECURE_SSL_REDIRECT = True
