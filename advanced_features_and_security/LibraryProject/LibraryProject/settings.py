@@ -146,3 +146,10 @@ SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SECURE_PROXY_SSL_HEADER =  ('HTTP_X_FORWARDED_PROTO', 'Https')
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://127.0.0.1:8000",
+    "https://localhost:8000",
+]
+# Email Backend Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
