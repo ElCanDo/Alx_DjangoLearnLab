@@ -4,7 +4,7 @@ from django.utils import timezone
 
 # Serialization classes to handle Book and Author serialization
 class BookSerializer(serializers.ModelSerializer):
-    author = AuthorSerializer(read_only=True)
+    author = AuthorSerializer(many=True, read_only=True)
     class Meta:
         model = Book #References Book model in models.py
         fields = '__all__' # Include all the fields in the Book instance
