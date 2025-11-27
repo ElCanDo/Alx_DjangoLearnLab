@@ -3,6 +3,11 @@ from .models import Book, Author
 from django.utils import timezone
 
 # Serialization classes to handle Book and Author serialization
+class AuthorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Author # References the Author model in models.py
+        fields = ['name'] # Include only the name field in the Author model
+
 class BookSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(many=True, read_only=True)
     class Meta:
@@ -17,7 +22,3 @@ class BookSerializer(serializers.ModelSerializer):
         return value
 
 
-class AuthorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Author # References the Author model in models.py
-        fields = ['name'] # Include only the name field in the Author model
