@@ -13,7 +13,7 @@ class ListView(generics.ListAPIView):
     permission_classes = IsAuthenticatedOrReadOnly, IsAuthenticated
     filter_backends = [ filters.SearchFilter, filters.OderingFilter]
     search_fields = []
-    odering_fields = []
+    odering_fields = ['title', 'publication_year']
 
 class DetailView(generics.RetrieveAPIView):
     queryset = Book.object.all()
