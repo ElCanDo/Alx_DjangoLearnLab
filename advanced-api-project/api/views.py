@@ -12,7 +12,7 @@ class ListView(generics.ListAPIView):
     serializer_class = BookSerializer
     permission_classes = IsAuthenticatedOrReadOnly, IsAuthenticated
     filter_backends = [ filters.SearchFilter, filters.OrderingFilter]
-    search_fields = []
+    search_fields = ['title', 'author']
     odering_fields = ['title', 'publication_year']
 
 class DetailView(generics.RetrieveAPIView):
