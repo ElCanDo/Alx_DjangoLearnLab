@@ -7,7 +7,7 @@ class BookSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(many=True, read_only=True)
     class Meta:
         model = Book #References Book model in models.py
-        fields = '__all__' # Include all the fields in the Book instance
+        fields = '__all__' # Include all the fields in the Book model
 
     #Custom validation for publication_year
     def validate_publication_year(self, value):
@@ -20,4 +20,4 @@ class BookSerializer(serializers.ModelSerializer):
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author # References the Author model in models.py
-        fields = ['name'] # Include only the name field in the Author instance
+        fields = ['name'] # Include only the name field in the Author model
