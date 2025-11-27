@@ -15,7 +15,7 @@ class BookViewTests(APITestCase):
         self.client.login(username ="booktester",
             password="booktestpass321")
         
-        url = reverse("books")
+        url = reverse("book-list")
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -24,7 +24,7 @@ class BookViewTests(APITestCase):
         self.client.login(username ="booktester",
             password="booktestpass321")
         data = {"title":"ElCando's Journey", "publication_year": 2025, "author":"ElCanDo"}
-        url = reverse("books")
+        url = reverse("add-new-book")
         response = self.client.post(url, data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["title"], data["title"])
