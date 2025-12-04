@@ -17,7 +17,7 @@ def login_view(request):
     else:
         # Display empty form for GET requests
         form = RegisterForm()
-    return render(request, "blog/static/register.html", {"form": form}) 
+    return render(request, "blog/register.html", {"form": form}) 
 
 # Handle user login
 def login_view(request):
@@ -34,7 +34,7 @@ def login_view(request):
         else:
             messages.error(request, "Invalid credentials")
 
-    return render(request, "blog/static/login.html")
+    return render(request, "blog/login.html")
 
 # Handle user logout@login_required
 def logout_view(request):
@@ -44,4 +44,4 @@ def logout_view(request):
 # Show user profile (only for logged-in users)
 @login_required
 def profile_view(request):
-    return render(request, "blog/static/profile.html", {"user": request.user})
+    return render(request, "blog/profile.html", {"user": request.user})
