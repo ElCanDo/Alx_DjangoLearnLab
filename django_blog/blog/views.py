@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
-from . models import Post, Comment
+from . models import Post, Comment, Tag
 from . forms import PostForm, CommentForm
 from .serializers import PostSerializer
 
@@ -117,6 +117,17 @@ def search_posts(request):
         
     serializer = PostSerializer(results, many=True)     
     return render(request, "blog/search_results.html", {"results": results, "query": query})
+
+"""Show Posts filtered by a Tag"""
+class PostByTagListView(ListView):
+
+    model = Post
+    template_name = "blog/posts_by_tag.html"
+    context_object_name = "posts"
+
+    def get_queryset(self):
+        tag_slug = self.kwargs.get('tag_slug')
+        return Post.objects.filter(tags__slug=tag_slug).distinct()
 
 
 """CRUD Operations For Comments"""
