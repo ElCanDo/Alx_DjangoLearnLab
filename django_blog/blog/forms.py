@@ -22,13 +22,13 @@ class RegisterForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ["title", "content"]  # Fields to include in the form
-
+        fields = ["title", "content", "tags"]  # Fields to include in the form
+        widgets = {
+            'tags': TagWidget(),  # Use TagWidget for tags field
+        }
 
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ["content"]  # Field to include in the form
-        widgets = {
-            "tags": TagWidget(),  # Use TagWidget for tags field
-        }
+       
