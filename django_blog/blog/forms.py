@@ -6,6 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Post, Comment
 from taggit.forms import TagWidget
+
+
 # Custom registration form extending Django's UserCreationForm
 class RegisterForm(UserCreationForm):  
     email = forms.EmailField(required=True) # Add email field as a required field
