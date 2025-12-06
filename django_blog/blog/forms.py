@@ -4,7 +4,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 # Import the User model
 from django.contrib.auth.models import User
-from .models import Post
+from .models import Post, Comment
 
 # Custom registration form extending Django's UserCreationForm
 class RegisterForm(UserCreationForm):  
@@ -20,4 +20,10 @@ class RegisterForm(UserCreationForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ["title", "content"]  
+        fields = ["title", "content"]  # Fields to include in the form
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ["content"]  # Field to include in the form
