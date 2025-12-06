@@ -8,6 +8,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from . models import Post, Comment
 from . forms import PostForm, CommentForm
+from .serializers import PostSerializer
+
+
     # Handle user registration
 def register_view(request):
     # Check if form was submittedest.POST)
@@ -96,6 +99,25 @@ class PostDeleteView(DeleteView):
         post = self.get_object()
         return self.request.user == post.author
     
+# Search functionality for blog posts
+from django.db.models import Q
+
+def search_posts(request):
+    query = request.GET.get("q")
+    results = []
+    if query:
+        results = Post.objects.filter(
+            Q(title__icontains=query) |
+            Q(tags__name__icontains=query) |
+            Q(content__icontains=query) 
+            
+        ).distinct()
+    else:
+        posts = Post.objects.all()
+        
+    serializer = PostSerializer(results, many=True)     
+    return render(request, "blog/search_results.html", {"results": results, "query": query})
+
 
 """CRUD Operations For Comments"""
 class PostListView(ListView):
