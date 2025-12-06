@@ -16,6 +16,7 @@ post_urlpatterns = [
     path("post/<int:pk>/delete/", views.PostDeleteView.as_view(), name="post_delete"),
 ] +  urlpatterns
 
+
 comment_urlpatterns = [
     path("comments/", views.CommentCreateView.as_view, name="comment_list"),
     path("posts/<int:pk>/comments/new/", views.CommentCreateView.as_view(), name="comment_create"),
