@@ -3,7 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm # type: ignore
 from django.contrib import messages
-
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from . models import Post
     # Handle user registration
 def register_view(request):
     # Check if form was submittedest.POST)
@@ -62,3 +63,23 @@ def profile_view(request):
 #     return render(request, "blog/register.html", {"forms": forms})
 
 #     # return render(request, "blog/login.html",{"user": request.user})
+
+class PostListView(ListView):
+    model = Post
+    context_object_name = 'posts'
+    ordering = ['-published_date']
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'blog/post_detail.html'
+    
+class PostCreateView(CreateView):
+    model = Post
+
+class PostUpdateView(UpdateView):
+    model = Post
+    fields = ['title', 'content']
+
+class PostDeleteView(DeleteView):
+    model = Post
+    success_url = '/'
