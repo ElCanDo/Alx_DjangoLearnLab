@@ -3,7 +3,7 @@
 {% for post in posts %}
     <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
     <p>{{ post.content|truncatewords:20 }}</p>
-    <small>By {{ post.author }} | {{ post.created_at }}</small>
+    <small>By {{ post.author }} | {{ post.published_date }}</small>
 {% endfor %}
 
 {% if user.is_authenticated %}
