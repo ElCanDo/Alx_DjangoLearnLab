@@ -8,7 +8,7 @@ from .serializers import BookSerializer
 
 
 class BookList(generics.ListAPIView):
-    """"
+    """
     Public list view using DRF generic views.
     """
     queryset = Book.objects.all()
@@ -16,7 +16,7 @@ class BookList(generics.ListAPIView):
 
 
 class BookViewSet(viewsets.ModelViewSet):
-    """"
+    """
     The Complete CRUD operations with ModelViewSet
     """
     queryset = Book.objects.all()
