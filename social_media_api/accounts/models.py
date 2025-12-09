@@ -7,4 +7,3 @@ class CustomUser(AbstractUser):
     bio = models.TextField()
     profile_picture = models.ImageField()
     followers = models.ManyToManyField('self', symmetrical=False, related_name='following')
-    
