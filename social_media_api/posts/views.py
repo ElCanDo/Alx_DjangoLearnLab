@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from rest_framework.views import viewsets
-from .serializer import PostSerializer, CommentSerializer
+from rest_framework import viewsets
+from .serializers import PostSerializer, CommentSerializer
 from .models import Post, Comment
 
 class PostViewSet(viewsets.ModelViewSet):
