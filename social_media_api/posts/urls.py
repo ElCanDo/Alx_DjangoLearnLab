@@ -3,7 +3,8 @@ from rest_framework.routers import DefaultRouter
 from .views import PostViewSet, CommentViewSet
 
 router = DefaultRouter()
-router.register('posts', PostViewSet)
-router.register('comments', CommentViewSet)
+router.register('posts/', PostViewSet, basename='posts')
+router.register('comments/', CommentViewSet, basename='comments')
+router.register('feed/', PostViewSet, basename='feed')
 
 urlpatterns = router.urls
