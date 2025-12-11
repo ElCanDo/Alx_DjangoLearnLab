@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model()
+from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
@@ -12,7 +12,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id','username','email','password','verify_password','role','first_name','last_name')
+        fields = ('id','username','email','password','role')
     
     def validate(self, data):
         if data['password'] != data['verify_password']:
@@ -30,5 +30,10 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
         Token.objects.create(user=user)
         return user
+
+
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField(write_only=True)
 
     
