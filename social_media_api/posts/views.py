@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, generics
 from .serializers import PostSerializer, CommentSerializer
 from .models import Post, Comment
 from django.contrib.auth import get_user_model
