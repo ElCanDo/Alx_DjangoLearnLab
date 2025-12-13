@@ -1,10 +1,11 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets, permissions, generics
+from rest_framework import viewsets, permissions, status
 from .serializers import PostSerializer, CommentSerializer
 from .models import Post, Comment, Like
 from django.contrib.auth import get_user_model
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from notifications.models import Noification
 
 User = get_user_model()
 
@@ -20,7 +21,15 @@ class PostViewSet(viewsets.ModelViewSet):
         
         like, created = Like.objects.get_or_create(user=request.user, post=post)
         if created:
-            return Response({'status': 'post liked'})
+            Noification.objects.create(
+                recipient=post.author,
+                sender=request.user,
+                post=post,
+                notification_type='like'
+            )
+            return Response({'status': 'post liked'},
+                            status=status.HTTP_201_CREATED
+                            )
         else:
             like.delete()
             return Response({'status': 'post unliked'})
