@@ -4,7 +4,7 @@ from .models import Post, Comment, Like
 from django.contrib.auth import get_user_model
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from notifications.models import Noification
+from notifications.models import Notification
 
 User = get_user_model()
 
@@ -18,9 +18,11 @@ class PostViewSet(viewsets.ModelViewSet):
     def like(self, request, pk=None):
         post = generics.get_object_or_404(Post, pk=pk)
         
+
+
         like, created = Like.objects.get_or_create(user=request.user, post=post)
         if created:
-            Noification.objects.create(
+            Notification.objects.create(
                 recipient=post.author,
                 sender=request.user,
                 post=post,
