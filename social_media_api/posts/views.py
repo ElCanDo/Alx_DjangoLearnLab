@@ -29,9 +29,21 @@ class PostViewSet(viewsets.ModelViewSet):
             return Response({'message': 'post liked'},
                             status=status.HTTP_201_CREATED
                             )
-        else:
+        
+    @action(detail=True, methods=['post'])
+    def unlike(self, request, pk=None):
+        post = generics.get_object_or_404(Post, pk=pk)
+
+        like = Like.objects.filter(user=request.user, post=post).first()
+             
+        if like:
             like.delete()
-            return Response({'status': 'post unliked'})
+            return Response({'status': 'post unliked'}
+                            , status=status.HTTP_200_OK
+                            )
+        return Response({'message': 'Not liked yet'},
+                        status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 class FeedViewSet(viewsets.ModelViewSet):
